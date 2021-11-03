@@ -99,13 +99,15 @@ class SelectedBoardMenu : public State {
     this->context_->TransitionTo(new SettingsMenu);
   }
   void ButtonB() override {
+    
   }
   void ButtonA() override {
     this->context_->TransitionTo(new BoardSelection);
   }
   void UpdateLcd(LiquidCrystal *lcd) override
   {
-    
+    lcd->setCursor(0,0);
+    lcd->print("-> Wybór deski");
   }
 };
 class WorkMenu : public State {
@@ -124,7 +126,8 @@ class WorkMenu : public State {
   }
     void UpdateLcd(LiquidCrystal *lcd) override
   {
-    lcd->setCursor(0, 1);
+    lcd->setCursor(0,0);
+    lcd->print("-> Praca");
   }
   
 };
@@ -145,67 +148,71 @@ class SettingsMenu : public State {
   }
     void UpdateLcd(LiquidCrystal *lcd) override
   {
-    lcd->setCursor(0, 1);
+    lcd->setCursor(0,0);
+    lcd->print("-> Ustawienia");
   }
   
 };
 class Settings : public State {
  public:
   void ButtonUp() override {
-    this->context_->TransitionTo(new SelectedBoardMenu);
+
   }
   void ButtonDown() override {
-    this->context_->TransitionTo(new SelectedBoardMenu);
+
   }
     void ButtonB() override {
-
+      this->context_->TransitionTo(new SettingsMenu);
   }
   void ButtonA() override {
 
   }
     void UpdateLcd(LiquidCrystal *lcd) override
   {
-    lcd->setCursor(0, 1);
+    lcd->setCursor(0,0);
+    lcd->print("Ustawienia ustwa");
   }
   
 };
 class BoardSelection : public State {
  public:
   void ButtonUp() override {
-    this->context_->TransitionTo(new SelectedBoardMenu);
+
   }
   void ButtonDown() override {
-    this->context_->TransitionTo(new SelectedBoardMenu);
+    
   }
-    void ButtonB() override {
-
+  void ButtonB() override {
+    this->context_->TransitionTo(new SelectedBoardMenu);
   }
   void ButtonA() override {
 
   }
     void UpdateLcd(LiquidCrystal *lcd) override
   {
-    lcd->setCursor(0, 1);
+    lcd->setCursor(0,0);
+    lcd->print("-> Tutaj wybiorę deskę");
   }
   
 };
 class Work : public State {
  public:
   void ButtonUp() override {
-    this->context_->TransitionTo(new SelectedBoardMenu);
+
   }
   void ButtonDown() override {
-    this->context_->TransitionTo(new SelectedBoardMenu);
+    
   }
-    void ButtonB() override {
-
+  void ButtonB() override {
+    this->context_->TransitionTo(new WorkMenu);
   }
   void ButtonA() override {
 
   }
     void UpdateLcd(LiquidCrystal *lcd) override
   {
-    lcd->setCursor(0, 1);
+    lcd->setCursor(0,0);
+    lcd->print("Praca");
   }
   
 };
