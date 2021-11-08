@@ -10,7 +10,7 @@ const int BUTTON_A_PIN = 8;
 const int BUTTON_B_PIN = 9;
 
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
-Context *cx = new Context(new Work(),&lcd);
+Context cx(new Work(),&lcd);
 void setup()
 {
     lcd.begin(16, 2);
@@ -29,18 +29,18 @@ void loop()
 {
     if(digitalRead(BUTTON_UP_PIN) == HIGH)
     {
-      cx->ButtonUp();  
+      cx.ButtonUp();  
     }
         else if(digitalRead(BUTTON_DOWN_PIN) == HIGH)
     {
-      cx->ButtonDown();  
+      cx.ButtonDown();  
     }
         else if(digitalRead(BUTTON_A_PIN) == HIGH)
     {
-      cx->ButtonA();  
+      cx.ButtonA();  
     }
         else if(digitalRead(BUTTON_B_PIN) == HIGH)
     {
-      cx->ButtonB();  
+      cx.ButtonB();  
     }
 }
