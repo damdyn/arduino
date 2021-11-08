@@ -10,7 +10,8 @@ const int BUTTON_A_PIN = 8;
 const int BUTTON_B_PIN = 9;
 
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
-Context cx(new Work(),&lcd);
+Work work;
+Context cx(&work, &lcd);
 void setup()
 {
     lcd.begin(16, 2);
