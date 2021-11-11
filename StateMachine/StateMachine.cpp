@@ -1,5 +1,4 @@
 #include <LiquidCrystal.h>
-#include "StateMachine.h"
 class Context;
 
 class State {
@@ -138,7 +137,8 @@ class SettingsMenu : public State {
     this->context_->TransitionTo(new SelectedBoardMenu);
   }
   void ButtonDown() override {
-    this->context_->TransitionTo(new WorkMenu);
+    Work work;
+    this->context_->TransitionTo(&work);
   }
     void ButtonB() override {
 
