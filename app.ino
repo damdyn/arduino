@@ -110,6 +110,7 @@ public:
     void TransitionTo(State* state) {
         //if (this->state_ != nullptr)
             //delete this->state_;
+        delete state_;
         this->lcd_->clear();
         this->state_ = state;
         this->state_->set_context(this);
@@ -420,9 +421,8 @@ const int BUTTON_B_PIN = 9;
 
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 
-Work work;
 CurrentState currentState;
-Context cx(&work, &lcd, &currentState);
+Context cx(new Work(), &lcd, &currentState);
 void setup()
 {
     lcd.begin(16, 2);
